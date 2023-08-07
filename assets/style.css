@@ -1,0 +1,15 @@
+.page-top {
+    height: 100px;
+    text-align: center;
+    padding-top: 20px;
+    background: linear-gradient(to right, #9198e5, #17238b);
+    
+}
+
+
+
+
+
+#current-weather, p {
+    padding-left: 10px;
+}
