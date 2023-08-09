@@ -19,3 +19,5 @@
 
 
 [URL] https://pb1983.github.io/Weather-App/
+
+![Weather App](https://github.com/pb1983/Weather-App/assets/25019626/391f368a-2a8e-4ef7-8cc2-c86ca2d4cac4)
