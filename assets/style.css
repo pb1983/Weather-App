@@ -8,14 +8,15 @@
 }
 
 #current-weather {
-    position: relative;
-    left: 350px;
-    bottom: 150px;
+    position: absolute;
+    left: 360px;
+    top: 125px;
     /* border: 2px solid black; */
     width: 800px;
     
   
 } 
+
 
 #current-weather, p {
     padding-left: 10px;
@@ -26,5 +27,17 @@
 
     width: 12rem;
     background-color:rgb(100, 100, 202);
+   
+}
+
+#search-border {
+    border-bottom: 1px solid grey;
+    width: 250px;
+    margin: 5px;
+}
+
+#forecast {
+    position: absolute;
+    bottom: 75px;
    
 }

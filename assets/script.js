@@ -11,14 +11,17 @@ let realDate = "";
 let icon = "";
 let fiveDayForcast = document.querySelector("#forecast");
 let citiesSearched = JSON.parse(localStorage.getItem("location")) || [];
-
+let cityBtn = "";
 
 
 
 
 submit.addEventListener("click", function (event) {
 
+
     event.target.matches("submit");
+
+    document.getElementById("forecast").innerHTML = ""
 
     let location = weatherLoc.value;
 
@@ -57,7 +60,6 @@ submit.addEventListener("click", function (event) {
 
             for (let i = 0; i < weatherInfo.length; i += 8) {
 
-
                 let containerDiv = document.createElement("div");
                 let contentDiv = document.createElement("div");
                 let fiveDayDate = document.createElement("h5");
@@ -65,6 +67,7 @@ submit.addEventListener("click", function (event) {
                 let fiveDayTemp = document.createElement("p");
                 let fiveDayWind = document.createElement("p");
                 let fiveDayHum = document.createElement("p");
+
 
 
                 containerDiv.classList.add("card", "card-width", "row", "col-9");
@@ -83,6 +86,8 @@ submit.addEventListener("click", function (event) {
                 contentDiv.appendChild(fiveDayIcon);
 
 
+
+
                 fiveDayDate.textContent = dayjs.unix(weatherInfo[i].dt).format("MM/DD/YYYY");
                 fiveDayTemp.textContent = "Temp: " + weatherInfo[i].main.temp + "\u00B0F";
                 fiveDayWind.textContent = " Wind: " + weatherInfo[i].wind.speed + " MPH";
@@ -96,27 +101,32 @@ submit.addEventListener("click", function (event) {
             }
         })
 })
+
+
+function cityStorage() {
+
     
-
-submit.addEventListener("click", function (event) {
-    event.target.matches("submit")
-    let cityBtn = document.querySelector("#cityList");
-    let newBtn = document.createElement("button")
-
-    // for (let i = 0; i < cityBtn.length; i++) {
-    cityBtn.appendChild(newBtn);
-    newBtn.textContent = weatherLoc.value;
-    console.log(cityBtn);
+    for (let i = 0; i < citiesSearched.length; i++) {
 
 
-})
+        cityBtn = document.querySelector("#cityList");
+        let newBtn = document.createElement("button");
+        let btnDiv = document.createElement("div");
 
-            // }     
+        newBtn.classList.add("mx-2", "my-1", "flex-colum");
+        cityBtn.appendChild(btnDiv);
+        cityBtn.appendChild(newBtn);
+
+        newBtn.textContent = citiesSearched[i];
 
 
+        console.log(citiesSearched)
 
+    }
 
+}
 
+cityStorage();
 
 
 
