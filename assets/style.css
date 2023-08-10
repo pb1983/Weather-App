@@ -11,7 +11,6 @@
     position: absolute;
     left: 360px;
     top: 125px;
-    /* border: 2px solid black; */
     width: 800px;
     
   
@@ -22,6 +21,7 @@
     padding-left: 10px;
     
 }
+
 
 .card-width {
 
@@ -37,8 +37,11 @@
 }
 
 #forecast {
+
+position: absolute;
+bottom: 75px;
     
-    position: absolute;
-    bottom: 75px;
-   
 }
+
+
+

@@ -15,8 +15,8 @@ let cityBtn = document.querySelector("#cityList")
 
 
 
-
-
+// Returns current and 5-day forcast for city provided by the user. 
+// Also creates a button for each city searched.
 
 submit.addEventListener("click", function (event) {
 
@@ -26,48 +26,53 @@ submit.addEventListener("click", function (event) {
     let location = weatherLoc.value;
     renderPage(location);
 
-            citiesSearched.push(location);
-            localStorage.setItem("location", JSON.stringify(citiesSearched));
-            cityBtn = document.querySelector("#cityList");
-            cityBtn.innerHTML = "";
+    citiesSearched.push(location);
+    localStorage.setItem("location", JSON.stringify(citiesSearched));
+    cityBtn = document.querySelector("#cityList");
+    cityBtn.innerHTML = "";
 
 
-            for (let i = 0; i < citiesSearched.length; i++) {
+    for (let i = 0; i < citiesSearched.length; i++) {
 
 
-                newBtn = document.createElement("button");
-                let btnDiv = document.createElement("div");
+        newBtn = document.createElement("button");
+        let btnDiv = document.createElement("div");
 
-                newBtn.classList.add("mx-2", "my-1", "flex-colum", "cityName");
-                cityBtn.appendChild(btnDiv);
-                cityBtn.appendChild(newBtn);
-
-
-
-                newBtn.textContent = citiesSearched[i];
+        newBtn.classList.add("mx-2", "my-1", "flex-colum", "cityName");
+        cityBtn.appendChild(btnDiv);
+        cityBtn.appendChild(newBtn);
 
 
-                console.log(citiesSearched)
-            }
+        newBtn.textContent = citiesSearched[i];
+        console.log(citiesSearched);
+
+
+    }
 
 })
 
 
+//Allows history buttons to display conditions for previously searched city when clicked. 
 
 cityBtn.addEventListener("click", function (event) {
 
-    if (event.target.matches(".cityName")) {     
+    if (event.target.matches(".cityName")) {
         renderPage(event.target.textContent)
+
     }
 
-    
+
+    console.log(citiesSearched)
 
     document.getElementById("forecast").innerHTML = ""
-    
+
 })
 
 
+//Main function that retrieves data from APIs and renders on page. 
+
 function renderPage(location) {
+
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=0dffd273a14a316064e1b544e7c8e115`)
         .then(response => response.json())
         .then(cities => {
@@ -127,7 +132,6 @@ function renderPage(location) {
 
 
 
-
                 fiveDayDate.textContent = dayjs.unix(weatherInfo[i].dt).format("MM/DD/YYYY");
                 fiveDayTemp.textContent = "Temp: " + weatherInfo[i].main.temp + "\u00B0F";
                 fiveDayWind.textContent = " Wind: " + weatherInfo[i].wind.speed + " MPH";
@@ -136,8 +140,6 @@ function renderPage(location) {
                 icon = weatherInfo[i].weather[0].icon;
 
                 fiveDayIcon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
-
-
 
 
             }
